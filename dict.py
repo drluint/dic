@@ -6,11 +6,10 @@ args = sys.argv
 search = ''
 if len(args)>1:
 	search = args[1]
+else:
+	search = search=input('search: ')
 cli = tornado.httpclient.HTTPClient()
-
 link='http://www.iciba.com/'
-if not search:
-    search=input('search: ')
 link+=search
 data=cli.fetch(link)
 body=data.body.decode('utf8')
