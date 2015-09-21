@@ -13,7 +13,7 @@ link='http://www.iciba.com/'
 link+=search
 data=cli.fetch(link)
 body=data.body.decode('utf8')
-soup=BeautifulSoup(body)
+soup=BeautifulSoup(body, "html.parser")
 
 group=soup.find_all(class_='group_pos')
 group2=group[0].find_all('p')
