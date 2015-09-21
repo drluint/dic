@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 from bs4 import BeautifulSoup
 import tornado.httpclient
-
+import sys
+args = sys.argv
+search = ''
+if len(args)>1:
+	search = args[1]
 cli = tornado.httpclient.HTTPClient()
+
 link='http://www.iciba.com/'
-serch=input('search: ')
-link+=serach
+if not search:
+    search=input('search: ')
+link+=search
 data=cli.fetch(link)
 body=data.body.decode('utf8')
 soup=BeautifulSoup(body)
